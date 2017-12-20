@@ -15,7 +15,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     func configureCell(_ cell: PhotoCollectionViewCell, withPhoto photo: Photo) {
         
-        
+        //to do
         
     }
 

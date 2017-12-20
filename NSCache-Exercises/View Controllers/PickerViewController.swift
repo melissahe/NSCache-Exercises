@@ -15,20 +15,50 @@ class PickerViewController: UIViewController {
     
     var cellSpacing: CGFloat = UIScreen.main.bounds.width * 0.03
     
-    var photos: [Photo] = []
-    
+    var photos: [Photo] = [] {
+        didSet {
+            pickerCollectionView.reloadData()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         pickerCollectionView.delegate = self
         pickerCollectionView.dataSource = self
     }
+    
+    func loadPhoto(keyword: String) {
+        FlickrAPI.manager.performSearch(keyword: keyword) { (error, photos) in
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            if let photos = photos {
+                self.photos = photos
+            }
+        }
+    }
 
 }
 
 extension PickerViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //to do - should load images
+        guard let searchText = searchBar.text else {
+            return
+        }
+        
+        loadPhoto(keyword: searchText)
+    }
+}
+
+extension PickerViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let currentPhoto = photos[indexPath.row]
+        let currentCell = collectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
+    
+        PhotoDataModel.manager.addToFeed(photo: currentPhoto, andImage: currentCell.imageView.image)
     }
 }
 
@@ -60,7 +90,10 @@ extension PickerViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! PhotoCollectionViewCell
         let currentPhoto = photos[indexPath.row]
         
-        cell.configureCell(cell, withPhoto: currentPhoto)
+        cell.imageView.image = nil
+        cell.imageView.image = #imageLiteral(resourceName: "placeholder-image")
+        
+        cell.configureCell(withPhoto: currentPhoto)
         
         return cell
     }

@@ -40,10 +40,15 @@ class FlickrAPI {
                 //json parsing to create your model objects
                 do {
                    let search = try JSONDecoder().decode(Search.self, from: data)
-                    completion(nil, search.photos.photo)
+                    
+                    DispatchQueue.main.async {
+                        completion(nil, search.photos.photo)
+                    }
                 } catch let error {
                     print(error)
-                    completion(error, nil)
+                    DispatchQueue.main.async {
+                        completion(error, nil)
+                    }
                 }
             }
         }.resume()

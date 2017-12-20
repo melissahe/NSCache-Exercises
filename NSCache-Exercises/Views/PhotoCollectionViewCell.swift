@@ -13,9 +13,28 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     var urlString = ""
     
-    func configureCell(_ cell: PhotoCollectionViewCell, withPhoto photo: Photo) {
+    func configureCell(withPhoto photo: Photo) {
         
-        //to do
+        //if image is cached
+        if let cachedImage = ImageCache.manager.getCachedImage(withUrl: photo.url_m) {
+            self.imageView.image = cachedImage
+            self.setNeedsLayout()
+        } else { //if image is not cached
+            self.urlString = photo.url_m.absoluteString
+            ImageCache.manager.processImageInBackground(imageURL: photo.url_m, completion: { (error, onlineImage) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                
+                if let onlineImage = onlineImage {
+                    if photo.url_m.absoluteString == self.urlString {
+                        self.imageView.image = onlineImage
+                        self.setNeedsLayout()
+                    }
+                }
+            })
+        }
         
     }
 

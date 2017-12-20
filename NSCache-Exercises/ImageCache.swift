@@ -19,10 +19,16 @@ class ImageCache {
         DispatchQueue.global().async {
             do {
                 let imageData = try Data.init(contentsOf: imageURL)
-                let image = UIImage.init(data: imageData)
+                guard let image = UIImage.init(data: imageData) else {
+                    return
+                }
+                //get image, then store it in cache
+                self.sharedCached.setObject(image, forKey: imageURL.absoluteString as NSString)
+                
                 DispatchQueue.main.async {
                     completion(nil, image)
                 }
+                
             } catch {
                 print(error)
                 DispatchQueue.main.async {

@@ -17,6 +17,7 @@
 		8175D53E1FE9D0CC0084D0F8 /* FlickrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8175D53D1FE9D0CC0084D0F8 /* FlickrAPI.swift */; };
 		81AFFAF71FE9E4D9009D54A4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AFFAF61FE9E4D9009D54A4 /* PhotoCollectionViewCell.swift */; };
 		81AFFAFA1FE9F698009D54A4 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AFFAF91FE9F698009D54A4 /* ImageCache.swift */; };
+		81AFFAFC1FEA05CD009D54A4 /* PhotoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AFFAFB1FEA05CC009D54A4 /* PhotoDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8175D53D1FE9D0CC0084D0F8 /* FlickrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPI.swift; sourceTree = "<group>"; };
 		81AFFAF61FE9E4D9009D54A4 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		81AFFAF91FE9F698009D54A4 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		81AFFAFB1FEA05CC009D54A4 /* PhotoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				8175D5251FE9CEAD0084D0F8 /* AppDelegate.swift */,
 				81AFFAF91FE9F698009D54A4 /* ImageCache.swift */,
+				81AFFAFB1FEA05CC009D54A4 /* PhotoDataModel.swift */,
 				8175D53C1FE9D0AE0084D0F8 /* Models */,
 				8175D5371FE9D0030084D0F8 /* View Controllers */,
 				81AFFAF81FE9E4E4009D54A4 /* Views */,
@@ -179,6 +182,7 @@
 				81AFFAF71FE9E4D9009D54A4 /* PhotoCollectionViewCell.swift in Sources */,
 				8175D53B1FE9D0A30084D0F8 /* Search.swift in Sources */,
 				8175D5281FE9CEAD0084D0F8 /* FeedViewController.swift in Sources */,
+				81AFFAFC1FEA05CD009D54A4 /* PhotoDataModel.swift in Sources */,
 				8175D5261FE9CEAD0084D0F8 /* AppDelegate.swift in Sources */,
 				81AFFAFA1FE9F698009D54A4 /* ImageCache.swift in Sources */,
 				8175D53E1FE9D0CC0084D0F8 /* FlickrAPI.swift in Sources */,
